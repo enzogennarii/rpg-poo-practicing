@@ -1,59 +1,34 @@
-/* eslint-disable sonarjs/no-duplicate-string */
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { Mage, Necromancer, Ranger, Warrior } from './Archetypes';
-import { PVP } from './Battle';
+import Battle, { PVE, PVP } from './Battle';
 import Character from './Character';
-import { Dwarf, Elf, Halfling, Orc } from './Races';
-import getRandomInt from './utils';
+import Dragon from './Dragon';
+import Monster from './Monster';
 
-const dwarfRace = new Dwarf('Dwarf', getRandomInt());
-const elfRace = new Elf('Elf', getRandomInt());
-// const halflingRace = new Halfling('Halfling', getRandomInt());
-// const orcRace = new Orc('Orc', getRandomInt());
+const player1 = new Character('player1');
+const player2 = new Character('player2');
+const player3 = new Character('player3');
 
-const mageArchetype = new Mage('Mage');
-const necromancerArchetype = new Necromancer('Necromancer');
-// const rangerArchetype = new Ranger('Ranger');
-// const warriorArchetype = new Warrior('Warrior');
+player1.levelUp();
+player1.levelUp();
+player1.levelUp();
 
-const Player1 = new Character('Player1', dwarfRace, mageArchetype);
-const Player2 = new Character('Player2', elfRace, necromancerArchetype);
+const monster1 = new Monster();
+const monster2 = new Dragon();
 
-// Player1.levelUp();
-// Player1.levelUp();
+const pvp = new PVP(player2, player3);
 
-// Player2.levelUp();
-// Player2.levelUp();
+const pve = new PVE(player1, [monster1, monster2]);
 
-console.log('-------------- ANTES DA BATALHA ---------------');
-console.log('------------------ JOGADOR 1 ------------------');
-console.log('name:', Player1.name);
-console.log('lifePoints:', Player1.lifePoints);
-console.log('strength:', Player1.strength);
-console.log('defense:', Player1.defense);
+const runBattles = (battles: Battle[]) => {
+  battles.forEach((b) => b.fight());
+};
 
-console.log('------------------ JOGADOR 2 ------------------');
-console.log('name:', Player2.name);
-console.log('lifePoints:', Player2.lifePoints);
-console.log('strength:', Player2.strength);
-console.log('defense:', Player2.defense);
-
-const result = new PVP(Player1, Player2).fight();
-const winner = result === 1
-  ? 'PLAYER 1 VENCEU'
-  : 'PLAYER 2 VENCEU';
-console.log('\n\n', winner);
-
-console.log('\n\n-------------- DEPOIS DA BATALHA --------------');
-console.log('------------------ JOGADOR 1 ------------------');
-console.log('name:', Player1.name);
-console.log('lifePoints:', Player1.lifePoints);
-console.log('strength:', Player1.strength);
-console.log('defense:', Player1.defense);
-
-console.log('------------------ JOGADOR 2 ------------------');
-console.log('name:', Player2.name);
-console.log('lifePoints:', Player2.lifePoints);
-console.log('strength:', Player2.strength);
-console.log('defense:', Player2.defense);
+export {
+  player1,
+  player2,
+  player3,
+  monster1,
+  monster2,
+  pvp,
+  pve,
+  runBattles,
+};
