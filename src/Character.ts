@@ -17,13 +17,15 @@ class Character implements Fighter {
 
   constructor(
     name: string,
+    race: Race | null = null,
+    archetype: Archetype | null = null,
   ) {
     this._dexterity = getRandomInt();
     this._strength = getRandomInt();
     this._defense = getRandomInt();
 
-    this._race = new Elf(name, this._dexterity);
-    this._archetype = new Mage(name);
+    this._race = race || new Elf(name, this._dexterity);
+    this._archetype = archetype || new Mage(name);
 
     this._energy = {
       type_: this._archetype.energyType,
