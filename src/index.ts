@@ -1,68 +1,59 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { Mage, Warrior } from './Archetypes';
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Mage, Necromancer, Ranger, Warrior } from './Archetypes';
 import { PVP } from './Battle';
 import Character from './Character';
-import { Orc } from './Races';
+import { Dwarf, Elf, Halfling, Orc } from './Races';
+import getRandomInt from './utils';
 
-const orcRace = new Orc('Romanos', 7);
-const warriorArchetype = new Warrior('Spartano');
-const Leonidas = new Character('Leonidas', orcRace, warriorArchetype);
+const dwarfRace = new Dwarf('Dwarf', getRandomInt());
+const elfRace = new Elf('Elf', getRandomInt());
+// const halflingRace = new Halfling('Halfling', getRandomInt());
+// const orcRace = new Orc('Orc', getRandomInt());
 
-const mageArchetype = new Mage('Strange');
-const DoctorStrange = new Character('Steven Strange', orcRace, mageArchetype);
+const mageArchetype = new Mage('Mage');
+const necromancerArchetype = new Necromancer('Necromancer');
+// const rangerArchetype = new Ranger('Ranger');
+// const warriorArchetype = new Warrior('Warrior');
 
-// DoctorStrange.levelUp();
-// DoctorStrange.levelUp();
-// DoctorStrange.levelUp();
+const Player1 = new Character('Player1', dwarfRace, mageArchetype);
+const Player2 = new Character('Player2', elfRace, necromancerArchetype);
 
-console.log('--------------ANTES DA BATALHA---------------');
-console.log('--------------Leonidas--------------');
-console.log('name:', Leonidas.name);
-// console.log('archetype:', Leonidas.archetype);
-console.log('defense:', Leonidas.defense);
-console.log('dexterity:', Leonidas.dexterity);
-// console.log('energy:', Leonidas.energy);
-console.log('lifePoints:', Leonidas.lifePoints);
-// console.log('maxLifePoints:', Leonidas.maxLifePoints);
-// console.log('race:', Leonidas.race);
-console.log('strength:', Leonidas.strength);
+// Player1.levelUp();
+// Player1.levelUp();
 
-console.log('\n--------------Doutor Estranho--------------');
-console.log('name:', DoctorStrange.name);
-// console.log('archetype:', DoctorStrange.archetype);
-console.log('defense:', DoctorStrange.defense);
-console.log('dexterity:', DoctorStrange.dexterity);
-// console.log('energy:', DoctorStrange.energy);
-console.log('lifePoints:', DoctorStrange.lifePoints);
-// console.log('maxLifePoints:', DoctorStrange.maxLifePoints);
-// console.log('race:', DoctorStrange.race);
-console.log('strength:', DoctorStrange.strength);
+// Player2.levelUp();
+// Player2.levelUp();
 
-const result = new PVP(Leonidas, DoctorStrange).fight();
+console.log('-------------- ANTES DA BATALHA ---------------');
+console.log('------------------ JOGADOR 1 ------------------');
+console.log('name:', Player1.name);
+console.log('lifePoints:', Player1.lifePoints);
+console.log('strength:', Player1.strength);
+console.log('defense:', Player1.defense);
+
+console.log('------------------ JOGADOR 2 ------------------');
+console.log('name:', Player2.name);
+console.log('lifePoints:', Player2.lifePoints);
+console.log('strength:', Player2.strength);
+console.log('defense:', Player2.defense);
+
+const result = new PVP(Player1, Player2).fight();
 const winner = result === 1
-  ? 'LEONIDAS VENCEU'
-  : 'DOUTOR ESTRANHO VENCEU';
+  ? 'PLAYER 1 VENCEU'
+  : 'PLAYER 2 VENCEU';
 console.log('\n\n', winner);
 
-console.log('\n\n--------------DEPOIS DA BATALHA---------------');
-console.log('--------------Leonidas--------------');
-console.log('name:', Leonidas.name);
-// console.log('archetype:', Leonidas.archetype);
-console.log('defense:', Leonidas.defense);
-console.log('dexterity:', Leonidas.dexterity);
-// console.log('energy:', Leonidas.energy);
-console.log('lifePoints:', Leonidas.lifePoints);
-// console.log('maxLifePoints:', Leonidas.maxLifePoints);
-// console.log('race:', Leonidas.race);
-console.log('strength:', Leonidas.strength);
+console.log('\n\n-------------- DEPOIS DA BATALHA --------------');
+console.log('------------------ JOGADOR 1 ------------------');
+console.log('name:', Player1.name);
+console.log('lifePoints:', Player1.lifePoints);
+console.log('strength:', Player1.strength);
+console.log('defense:', Player1.defense);
 
-console.log('\n--------------Doutor Estranho--------------');
-console.log('name:', DoctorStrange.name);
-// console.log('archetype:', DoctorStrange.archetype);
-console.log('defense:', DoctorStrange.defense);
-console.log('dexterity:', DoctorStrange.dexterity);
-// console.log('energy:', DoctorStrange.energy);
-console.log('lifePoints:', DoctorStrange.lifePoints);
-// console.log('maxLifePoints:', DoctorStrange.maxLifePoints);
-// console.log('race:', DoctorStrange.race);
-console.log('strength:', DoctorStrange.strength);
+console.log('------------------ JOGADOR 2 ------------------');
+console.log('name:', Player2.name);
+console.log('lifePoints:', Player2.lifePoints);
+console.log('strength:', Player2.strength);
+console.log('defense:', Player2.defense);
